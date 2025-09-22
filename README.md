@@ -1,191 +1,162 @@
-# Lichess Dashboard
+# 🏆 Lichess Full-Stack Dashboard
 
-A full-stack web application that interacts with the Lichess.org API to display user profiles, leaderboards, and tournaments.
+A modern, responsive full-stack web application that integrates with the Lichess.org API to display chess player profiles, leaderboards, and tournament information.
 
-## Features
+## 🌐 Live Demo
 
-### 🏆 User Profile
-- Search for any Lichess player by username
-- Display comprehensive profile information including:
-  - Username and title
-  - Profile bio and avatar
-  - Total games played
-  - Ratings across all game formats (Bullet, Blitz, Rapid, etc.)
-  - Online status and country
+- **Frontend**: [https://my-nachiketa-full-stack-task.vercel.app](https://my-nachiketa-full-stack-task.vercel.app)
+- **Backend API**: [https://mynachiketa-fullstack-task.onrender.com](https://mynachiketa-fullstack-task.onrender.com)
 
-### 📊 Leaderboards
-- View top players across different game formats
-- Support for multiple game types:
-  - Bullet, Blitz, Rapid, Classical
-  - Variants: Chess960, King of the Hill, Three-check, Antichess, Atomic, Horde, Racing Kings, Crazyhouse
-- Display player rankings with ratings and recent progress
+## ✨ Features
+
+### 👤 Player Profiles
+- **Default View**: Display top 12 chess players automatically on page load
+- **Search Functionality**: Search for any specific Lichess player by username
+- **Comprehensive Data**: Username, title, bio, avatar, country, online status
+- **Game Statistics**: Total games played across all formats
+- **Rating Display**: All game type ratings with color-coded skill levels
+
+### 🏅 Leaderboards
+- **Multiple Game Types**: Bullet, Blitz, Rapid, Classical, Chess960, and more
+- **Top Rankings**: View top 50 players for each game format
+- **Real-time Data**: Current ratings and recent progress indicators
+- **Interactive Tabs**: Easy navigation between different game types
 
 ### 🎯 Tournaments
-- View ongoing and upcoming tournaments
-- Tournament information includes:
-  - Tournament name and variant
-  - Time controls and start times
-  - Number of participants
-  - Tournament status (Created, Starting Soon, Started)
-  - Direct links to tournaments on Lichess
+- **Live Tournaments**: View ongoing and upcoming tournaments
+- **Detailed Information**: Tournament name, variant, time controls, participants
+- **Status Indicators**: Visual status for created, started, and upcoming tournaments
+- **Direct Links**: Quick access to join tournaments on Lichess
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 ### Backend
-- **Node.js** with **Express.js**
-- **Axios** for API requests
-- **CORS** for cross-origin requests
-- RESTful API architecture
+- **Node.js** + **Express.js**
+- **Axios** for HTTP requests
+- **CORS** configuration
+- **Error handling** with retry logic
+- **Deployed on Render**
 
 ### Frontend
-- **React** with modern hooks
+- **React 19** with modern hooks
+- **Vite** for fast development and building
 - **React Router** for navigation
-- **Axios** for HTTP requests
-- **CSS3** with modern styling (gradients, backdrop-filter, animations)
-- Fully responsive design
+- **Axios** for API communication
+- **CSS3** with modern features (Grid, Flexbox, Gradients)
+- **Responsive Design** for all devices
+- **Deployed on Vercel**
 
-## API Endpoints
-
-### Backend Routes
-- `GET /api/profile/:username` - Get user profile information
-- `GET /api/leaderboards/:gameType` - Get leaderboard for specific game type
-- `GET /api/tournaments` - Get ongoing/upcoming tournaments
-
-### Lichess API Integration
-This application uses the following Lichess API endpoints:
-- `https://lichess.org/api/user/{username}` - User profile data
-- `https://lichess.org/api/leaderboard/{gameType}` - Leaderboard data
-- `https://lichess.org/api/tournament` - Tournament data
-
-## Installation & Setup
+## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js (v16 or higher)
-- npm or yarn package manager
+- npm or yarn
 
-### Backend Setup
-1. Navigate to the backend directory:
+### Local Development
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Chayan-03/myNachiketa_FullStack_Task.git
+   cd myNachiketa_FullStack_Task
+   ```
+
+2. **Backend Setup**
    ```bash
    cd backend
-   ```
-
-2. Install dependencies:
-   ```bash
    npm install
+   npm run dev  # Starts on http://localhost:5000
    ```
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-   
-   The backend will be available at `http://localhost:5000`
-
-### Frontend Setup
-1. Navigate to the frontend directory:
+3. **Frontend Setup** (in a new terminal)
    ```bash
    cd frontend
-   ```
-
-2. Install dependencies:
-   ```bash
    npm install
+   npm run dev  # Starts on http://localhost:5173
    ```
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-   
-   The frontend will be available at `http://localhost:5173`
+4. **Open your browser**
+   Navigate to `http://localhost:5173`
 
-## Usage
+## 📡 API Endpoints
 
-### Running the Application
-1. Start the backend server first (port 5000)
-2. Start the frontend development server (port 5173)
-3. Open your browser and navigate to `http://localhost:5173`
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/profiles` | Get top chess players (default: 12) |
+| `GET` | `/api/profile/:username` | Get specific player profile |
+| `GET` | `/api/leaderboards/:gameType` | Get leaderboard for game type |
+| `GET` | `/api/tournaments` | Get ongoing/upcoming tournaments |
 
-### Using the Features
+### Example Requests
+```bash
+# Get top players
+GET https://mynachiketa-fullstack-task.onrender.com/api/profiles?nb=10
 
-#### Profile Search
-1. Go to the Profile page (home page)
-2. Enter a Lichess username in the search field
-3. Click "Search" to fetch and display the user's profile information
+# Get specific player
+GET https://mynachiketa-fullstack-task.onrender.com/api/profile/hikaru
 
-#### Viewing Leaderboards
-1. Navigate to the Leaderboards page
-2. Select a game type from the tabs (Bullet, Blitz, Rapid, etc.)
-3. View the top 50 players for that game format
+# Get bullet leaderboard
+GET https://mynachiketa-fullstack-task.onrender.com/api/leaderboards/bullet
+```
 
-#### Checking Tournaments
-1. Go to the Tournaments page
-2. View ongoing and upcoming tournaments
-3. Click "View on Lichess" to join or spectate tournaments
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 myNachiketa_FullStack_Task/
 ├── backend/
-│   ├── index.js           # Express server with API routes
-│   ├── package.json       # Backend dependencies
-│   └── node_modules/      # Backend dependencies
-└── frontend/
-    ├── src/
-    │   ├── components/
-    │   │   ├── Profile.jsx      # Profile search component
-    │   │   ├── Profile.css      # Profile styling
-    │   │   ├── Leaderboards.jsx # Leaderboards component
-    │   │   ├── Leaderboards.css # Leaderboards styling
-    │   │   ├── Tournaments.jsx  # Tournaments component
-    │   │   └── Tournaments.css  # Tournaments styling
-    │   ├── App.jsx              # Main app component with routing
-    │   ├── App.css              # Main app styling
-    │   ├── index.css            # Global styles
-    │   └── main.jsx             # App entry point
-    ├── package.json             # Frontend dependencies
-    └── vite.config.js           # Vite configuration
+│   ├── index.js              # Express server & API routes
+│   └── package.json          # Backend dependencies
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Profile.jsx   # Player profiles component
+│   │   │   ├── Leaderboards.jsx # Rankings component
+│   │   │   └── Tournaments.jsx  # Tournaments component
+│   │   ├── App.jsx           # Main app with routing
+│   │   └── main.jsx          # Entry point
+│   └── package.json          # Frontend dependencies
+├── .gitignore               # Git ignore rules
+└── README.md               # This file
 ```
 
-## Features Implemented
+## 🎨 Key Features Implemented
 
-✅ **Profile Page**
-- Username input field
-- Display user profile with avatar, bio, ratings, and game statistics
-- Error handling for invalid usernames
-- Responsive design
+- ✅ **Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- ✅ **Error Handling**: Graceful error messages and retry logic
+- ✅ **Loading States**: User-friendly loading indicators
+- ✅ **Modern UI**: Gradient backgrounds, hover effects, smooth animations
+- ✅ **API Rate Limiting**: Built-in handling for Lichess API limits
+- ✅ **CORS Configuration**: Proper cross-origin request handling
+- ✅ **Production Ready**: Deployed and optimized for production use
 
-✅ **Leaderboards Page**
-- Multiple game type selection tabs
-- Top 50 players display
-- Player rankings with ratings and progress indicators
-- Color-coded ratings based on skill level
+## 🔧 Configuration
 
-✅ **Tournaments Page**
-- Grid layout for tournament cards
-- Tournament status indicators
-- Time control and participant information
-- Direct links to Lichess tournaments
+### Environment Variables
+The app automatically detects the environment:
+- **Development**: Uses `localhost:5000` for API calls
+- **Production**: Uses the deployed Render backend URL
 
-✅ **Additional Features**
-- Modern, responsive UI with gradient backgrounds
-- Loading states and error handling
-- Hover effects and smooth animations
-- Cross-platform compatibility
+### CORS Setup
+Backend is configured to accept requests from:
+- Development: `localhost:5173`, `localhost:5174`
+- Production: Vercel deployment domain
 
-## API Rate Limiting
-The Lichess API has rate limiting in place. The application handles this gracefully with error messages and retry functionality.
+## 🚀 Deployment
 
-## Browser Support
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Mobile responsive design
-- Progressive enhancement
+### Backend (Render)
+1. Connected to GitHub repository
+2. Auto-deploys on code changes
+3. Environment: Node.js
+4. Build Command: `npm install`
+5. Start Command: `node index.js`
 
-## Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+### Frontend (Vercel)
+1. Connected to GitHub repository
+2. Framework: Vite
+3. Build Command: `npm run build`
+4. Output Directory: `dist`
+
+
+
+
+
 
