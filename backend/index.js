@@ -10,7 +10,8 @@ app.use(cors({
   origin: [
     'http://localhost:5173',
     'http://localhost:5174', 
-    'https://my-nachiketa-full-stack-task.vercel.app/' // Add your Vercel domain here
+    'https://my-nachiketa-full-stack-task.vercel.app', // Without trailing slash
+    'https://my-nachiketa-full-stack-task.vercel.app/' // With trailing slash for compatibility
   ],
   credentials: true
 }));
