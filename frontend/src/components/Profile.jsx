@@ -4,7 +4,7 @@ import './Profile.css';
 
 const API_BASE_URL = window.location.hostname === 'localhost' 
   ? 'http://localhost:5000/api'
-  : '/api';
+  : 'https://mynachiketa-fullstack-task.onrender.com/api';
 
 const Profile = () => {
   const [username, setUsername] = useState('');
